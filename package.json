@@ -1,0 +1,19 @@
+{
+  "name": "npm-published",
+  "version": "0.0.1",
+  "description": "Determine when modules in your project were updated",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhoriuchi/npm-published.git"
+  },
+  "keywords": ["npm", "published", "versions", "query", "dependencies"],
+  "author": "Branden Horiuchi <bhoriuchi@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/bhoriuchi/npm-published",
+  "dependencies": {
+    "node-getopt": "^0.2.3",
+    "lodash": "^4.12.0",
+    "npm": "^3.9.0"
+  }
+}
