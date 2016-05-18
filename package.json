@@ -7,13 +7,30 @@
     "type": "git",
     "url": "git+https://github.com/bhoriuchi/npm-published.git"
   },
-  "keywords": ["npm", "published", "versions", "query", "dependencies"],
+  "keywords": [
+    "npm",
+    "published",
+    "versions",
+    "query",
+    "dependencies"
+  ],
   "author": "Branden Horiuchi <bhoriuchi@gmail.com>",
   "license": "MIT",
   "homepage": "https://github.com/bhoriuchi/npm-published",
   "dependencies": {
     "node-getopt": "^0.2.3",
     "lodash": "^4.12.0",
-    "npm": "^3.9.0"
+    "npm": "^3.9.0",
+    "bluebird": "^3.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/bhoriuchi/npm-published/issues"
+  },
+  "bin": {
+    "npm-published": "npm-published.js"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
