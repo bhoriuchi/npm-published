@@ -19,9 +19,11 @@
   "homepage": "https://github.com/bhoriuchi/npm-published",
   "dependencies": {
     "node-getopt": "^0.2.3",
-    "lodash": "^4.12.0",
-    "npm": "^3.9.0",
-    "bluebird": "^3.4.0"
+    "lodash": "^4.14.0",
+    "npm": "^3.10.0",
+    "bluebird": "^3.4.0",
+    "json-diff": "^0.3.1",
+    "walk-promise": "^0.2.0"
   },
   "bugs": {
     "url": "https://github.com/bhoriuchi/npm-published/issues"
