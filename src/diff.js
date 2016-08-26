@@ -2,7 +2,7 @@ import _ from 'lodash'
 import path from 'path'
 import File from 'fs'
 import Promise from 'bluebird'
-import walk from 'walk'
+import walk from 'walk-promise'
 import { resolveSource } from './common'
 
 let fs = Promise.promisifyAll(File)

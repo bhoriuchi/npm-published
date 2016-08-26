@@ -6,7 +6,7 @@ var _ = _interopDefault(require('lodash'));
 var path = _interopDefault(require('path'));
 var File = _interopDefault(require('fs'));
 var Promise$1 = _interopDefault(require('bluebird'));
-var walk = _interopDefault(require('walk'));
+var walk = _interopDefault(require('walk-promise'));
 var npm = _interopDefault(require('npm'));
 
 var baseDir = __dirname.replace(/(.*\/npm-published).*/, '$1');

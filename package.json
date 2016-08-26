@@ -51,6 +51,7 @@
     "build:main": "npm run build:copybrc && rollup -c build/rollup.main.config.js && npm run build:rmbrc",
     "build:cli": "npm run build:copybrc && rollup -c build/rollup.cli.config.js && npm run build:rmbrc",
     "build": "npm run build:main && npm run build:cli",
-    "test": "npm run build && mocha test/index.js"
+    "test": "npm run build:main && mocha test/index.js",
+    "test:nobuild": "mocha test/index.js"
   }
 }

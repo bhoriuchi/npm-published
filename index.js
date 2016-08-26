@@ -8,7 +8,7 @@ var _ = _interopDefault(require('lodash'));
 var path = _interopDefault(require('path'));
 var File = _interopDefault(require('fs'));
 var Promise$1 = _interopDefault(require('bluebird'));
-var walk = _interopDefault(require('walk'));
+var walk = _interopDefault(require('walk-promise'));
 var npm = _interopDefault(require('npm'));
 
 function log(obj) {
@@ -41,7 +41,7 @@ function getDate(from) {
 //  resolve the source path
 function resolveSource(source) {
   if (source.match('^package.json$|^node_modules$')) {
-    source = path.resolve(baseDir, '/' + source);
+    source = path.resolve(baseDir, './' + source);
   } else if (source.match(/.+\/package.json$|.+\/node_modules$/)) {
     source = path.resolve(source);
   }
@@ -49,7 +49,11 @@ function resolveSource(source) {
 }
 
 //  file exists helper
-function fileExists(file, log) {
+function fileExists(file) {
+  var log = arguments.length <= 1 || arguments[1] === undefined ? function () {
+    return false;
+  } : arguments[1];
+
   try {
     File.statSync(file);
     return true;
@@ -58,6 +62,16 @@ function fileExists(file, log) {
     return false;
   }
 }
+
+var common = {
+  baseDir: baseDir,
+  oneDay: oneDay,
+  now: now,
+  daysAgo: daysAgo,
+  getDate: getDate,
+  resolveSource: resolveSource,
+  fileExists: fileExists
+};
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
   return typeof obj;
@@ -246,10 +260,12 @@ function query(source, from, to) {
 var index = {
   log: log,
   diff: diff,
-  query: query
+  query: query,
+  common: common
 };
 
 exports.log = log;
 exports.diff = diff;
 exports.query = query;
+exports.common = common;
 exports['default'] = index;

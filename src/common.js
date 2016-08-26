@@ -27,7 +27,7 @@ export function getDate (from) {
 //  resolve the source path
 export function resolveSource (source) {
   if (source.match('^package.json$|^node_modules$')) {
-    source = path.resolve(baseDir, `/${source}`)
+    source = path.resolve(baseDir, `./${source}`)
   } else if (source.match(/.+\/package.json$|.+\/node_modules$/)) {
     source = path.resolve(source)
   }
@@ -35,7 +35,7 @@ export function resolveSource (source) {
 }
 
 //  file exists helper
-export function fileExists (file, log) {
+export function fileExists (file, log = () => false) {
   try {
     fs.statSync(file)
     return true
