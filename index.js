@@ -1,5 +1,7 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', { value: true });
+
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var _ = _interopDefault(require('lodash'));
@@ -8,6 +10,10 @@ var File = _interopDefault(require('fs'));
 var Promise$1 = _interopDefault(require('bluebird'));
 var walk = _interopDefault(require('walk'));
 var npm = _interopDefault(require('npm'));
+
+function log(obj) {
+  console.log(obj);
+}
 
 var baseDir = __dirname.replace(/(.*\/npm-published).*/, '$1');
 var oneDay = 86400000; // 24*60*60*1000
@@ -88,7 +94,7 @@ function getDiffVersions(files, pathName) {
   });
 }
 
-function diff$1(a, b) {
+function diff(a, b) {
   var aPath = resolveSource(a);
   var bPath = resolveSource(b);
   var aMissing = [];
@@ -237,26 +243,13 @@ function query(source, from, to) {
   });
 }
 
-/**
- * npm-published - Determine when modules on a project were published
- * Author: Branden Horiuchi <bhoriuchi@gmail.com>
- * Command line utility
- */
-var opt = require('node-getopt').create([['s', 'source=ARG', 'package source (package.json or /node_modules)'], ['f', 'from=ARG', 'filter out packages older than a specific date, optional'], ['t', 'to=ARG', 'filter out packages newer than a specific date, optional'], ['d', 'deps=ARG', 'dependencies to check, options are dev, prod, and all. all is default'], ['', 'diff=ARG', ''], ['', 'days', 'display how many days ago each module was published instead of the publish date']]).bindHelp().parseSystem();
+var index = {
+  log: log,
+  diff: diff,
+  query: query
+};
 
-var _opt$options = opt.options;
-var source = _opt$options.source;
-var deps = _opt$options.deps;
-var from = _opt$options.from;
-var to = _opt$options.to;
-var showDays = _opt$options.showDays;
-var diff = _opt$options.diff;
-
-
-if (source && diff) {
-  diff$1(source, diff);
-} else {
-  query(source, from, to, { deps: deps, showDays: showDays }).then(function (pkgs) {
-    return console.log(JSON.stringify(pkgs, null, '  '));
-  });
-}
+exports.log = log;
+exports.diff = diff;
+exports.query = query;
+exports['default'] = index;

@@ -1,0 +1,1 @@
+console.log(__dirname.replace(/(.*\/npm-published).*/, '$1'))
